@@ -1,42 +1,20 @@
-var express = require('express'),
-    mongoose = require('mongoose'),
-    logger = require('morgan'),
-    bodyParser = require('body-parser');
+var express = require('express');
+
 
 var env = process.env.NODE_ENV = process.env.NODE_ENV || 'development';
 
 var app = express();
 
-app.set('views', __dirname + '/server/views');
-app.set('view engine', 'jade');
-app.use(logger('dev'));
-app.use(bodyParser.urlencoded({
-    extended: true
-}));
-app.use(bodyParser.json());
+var config = require('./server/config/config')[env];
 
-app.use(express.static(__dirname  + '/public'));
+require('./server/config/express')(app, config);
 
-if(env === 'development'){
-    mongoose.connect('mongodb://localhost/multivision');
-} else {
-    mongoose.connect('mongodb://danielp:multivision@ds027741.mongolab.com:27741/multivision1');
-}
+require('./server/config/mongoose')(config);
 
-var db = mongoose.connection;
-db.on('error', console.error.bind(console, 'connection error........'));
-db.once('open', function callback(){
-    console.log('multivision db opened');
-});
+require('./server/config/passport')();
 
-app.get('/partials/:partialPath', function(req, res){
-    res.render('partials/' + req.params.partialPath);
-});
+require('./server/config/routes')(app);
 
-app.get('*', function(req, res){
-    res.render('index');
-});
+app.listen(config.port);
 
-var port = process.env.PORT || 3030;
-app.listen(port);
-console.log('Listening on port ' + port + '.......');
+console.log('Listening on port ' + config.port + '.......');
