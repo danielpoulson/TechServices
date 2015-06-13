@@ -13,7 +13,6 @@
         alljs: [
             public + '**/*.js',
             server + '**/*.js',
-            '!' + public + 'vendor/**/*.js',
             './*.js'
         ],
         build: './build/',
@@ -60,8 +59,8 @@
          */
         bower: {
             json: require('./bower.json'),
-            directory: public + 'vendor/',
-            ignorePath: '../'
+            directory: './bower_components/',
+            ignorePath: '../..'
         },
 
         /**

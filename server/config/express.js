@@ -50,6 +50,7 @@ module.exports = function (app, config) {
     
 
     app.use(express.static(config.staticFiles));
+    app.use(express.static('./'));
 
 
 
