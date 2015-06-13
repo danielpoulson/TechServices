@@ -1,0 +1,28 @@
+section.padding-left-right-med
+    .row
+
+            h3.project-titleH2.col-md-8 Files ({{vm.fileCount}})
+            br
+
+            input(type='file', nv-file-select, uploader='uploader')
+            ul
+                li(ng-repeat="item in uploader.queue")
+                | Name:
+                span(ng-bind="item.file.name")
+                //button(ng-click="item.upload()")
+    .row
+        .col-sm-8
+            table.table.table-hover
+                thead
+                    tr.dv-fmc-background
+                        th File Icon
+                        th File Name
+                        th Uploaded By
+                        th Date
+                tbody
+                    tr.handPointer.clickspan.projTab(ng-repeat="dpfile in vm.deviation.dvFile")
+                        td {{dpfile.dvFileExt}}
+                        td {{dpfile.dvFileName}}
+                        td {{dpfile.dvAddedBy}}
+                        td {{dpfile.dvAddedAt | date : "dd/MM/yyyy"}}
+        .col-sm-4
