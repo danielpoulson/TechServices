@@ -4,17 +4,17 @@ var Projcount = require('mongoose').model('Projcount');
 exports.getNewProjectNo = function(req, res) {
     Projcount.findOne({}).exec(function(err, collection) {
         res.send(collection);
-    })
+    });
 };
 
 exports.getProjYear = function(req, res) {
     Projcount.find({projYear:req.params.year}).exec(function(err, projNo) {
         res.send(projNo);
-    })
+    });
 };
 
 exports.incProjNo = function(req, res) {
-    Projcount.update({projYear:req.params.year}, { $inc: { projCount: 1 } }, function (err) {
+    Projcount.update({projYear:req.params.year}, {$inc: {projCount: 1}}, function (err) {
         if (err) return handleError(err);
         res.send(200);
     });

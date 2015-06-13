@@ -2,14 +2,20 @@ var path = require('path');
 var rootPath = path.normalize(__dirname + '/../../');
 
 module.exports = {
-    development: {
-        db: 'mongodb://localhost/multivision',
+    dev: {
+        db: 'mongodb://localhost/deviationDB',
         rootPath: rootPath,
-        port: process.env.PORT || 3030
+        staticFiles: rootPath + 'public/',
+        appViews: rootPath + '/public/views/',
+        views: 'views'
+        //port: process.env.PORT || 3030
     },
-    production: {
+    build: {
         rootPath: rootPath,
-        db: 'mongodb://danielp:multivision@ds027741.mongolab.com:27741/multivision1',
-        port: process.env.PORT || 80
+        staticFiles: rootPath + 'build/',
+        appViews: rootPath + 'build/views/',
+        views: 'views',
+        db: 'mongodb://localhost/deviationDB'
+        //port: process.env.PORT || 8080
     }
-}
+};

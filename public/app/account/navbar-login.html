@@ -1,0 +1,29 @@
+<div ng-controller="NavBarLoginCtrl as vm" class="navbar-right">
+    <form ng-hide="vm.identity.isAuthenticated()" class="navbar-form">
+        <div class="form-group">
+            <input placeholder="Username" ng-model="vm.username" class="form-control" />
+        </div>
+        <div class="form-group">
+            <input type="password" placeholder="Password" ng-model="vm.password" class="form-control" />
+        </div>
+        <button ng-click="vm.signin(vm.username, vm.password)" class="btn btn-primary">Sign In</button>
+    </form>
+    <ul ng-show="vm.identity.isAuthenticated()" class="nav navbar-nav navbar-right">
+        <li dropdown="dropdown" class="dropdown"><a href="/" dropdown-toggle="dropdown-toggle" class="dropdown-toggle dv-log-white">{{vm.identity.currentUser.firstName + " " + vm.identity.currentUser.lastName}}<b class="caret"></b></a>
+            <ul class="dropdown-menu">
+                <li ng-show="vm.identity.currentUser.isAdmin()">
+                    <a ui-sref="profile({ id: 'new' })">New User</a>
+                </li>
+                <li ng-show="vm.identity.currentUser.isAdmin()">
+                    <a ui-sref="profile({ id: 'edit' })">Edit User</a>
+                </li>
+                <li>
+                    <a href="" ng-click="vm.openPass()">Change Password</a>
+                </li>
+                <li>
+                    <a href="" ng-click="vm.signout()">Sign Out</a>
+                </li>
+            </ul>
+        </li>
+    </ul>
+</div>

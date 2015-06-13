@@ -1,24 +1,24 @@
 (function() {
     "use strict";
-    var serviceId = 'getTaskCount';
-    angular.module('app').factory(serviceId, ['$http', '$q', getTaskCount]);
+    var serviceId = 'dvTaskCount';
+    angular.module('app').factory(serviceId, ['$http', '$q', dvTaskCount]);
 
-    function getRecordCount($http, $q) {
+    function dvTaskCount($http, $q) {
 
 
         function getTaskCount(taskId){
             var deferred = $q.defer();
-            var urlBase = '/api/taskcount/:' + taskId;
+            var urlBase = '/api/taskcount/' + taskId;
 
 
             $http.get(urlBase).
                 success(function (data) {
                     deferred.resolve(data);
-                    console.log(data);
+
                 }).
                 error(function (reason) {
                     deferred.reject(reason);
-                    console.log(reason);
+
                 });
 
 

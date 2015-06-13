@@ -1,0 +1,58 @@
+<section class="padding-left-right-med">
+    <div class="row">
+        <h3 class="project-titleH2 col-md-8">Files</h3>
+    </div>
+    <div class="row">
+        <div class="col-sm-8">
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th>Type</th>
+                        <th>File Name</th>
+                        <th>Uploaded By</th>
+                        <th>Date</th>
+                        <th>Actions</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr ng-repeat="dpfile in ctr.fstext">
+                        <td><img change-ext="change-ext" ext="dpfile.fsFileExt" src="" class="icon-img pull-right" />
+                        </td>
+                        <td>{{dpfile.fsFileName}}</td>
+                        <td>{{dpfile.fsAddedBy}}</td>
+                        <td>{{dpfile.fsAddedAt | date : "dd/MM/yyyy"}}</td>
+                        <td>
+                            <button type="button" ng-click="ctr.downloadfile(dpfile.fsFileName + '.' + dpfile.fsFileExt)" class="btn btn-info btn-xs pull-right"><span class="glyphicon glyphicon-circle-arrow-down"></span>Download</button>
+                        </td>
+                        <td>
+                            <button type="button" ng-click="ctr.deletefile(dpfile.fsFileName + '.' + dpfile.fsFileExt)" class="btn btn-danger btn-xs pull-right">
+                            <span class="glyphicon glyphicon-trash"></span>Remove</button>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        <div class="col-sm-4">
+            <div class="form-group">
+                <div>
+                    <label class="custom-file-upload">
+                        <input type="file" nv-file-select="nv-file-select" uploader="ctr.uploader" />Custom Upload
+                    </label>
+                    <h4 class="well">Files Selected</h4>
+                    <ul ng-repeat="item in ctr.uploader.queue" class="list-group">
+                        <li class="list-group-item">{{ item.file.name }}
+                            <button type="button" ng-click="item.upload()" ng-disabled="item.isReady || item.isUploading || item.isSuccess" class="btn btn-success btn-xs pull-right"><span class="glyphicon glyphicon-upload"></span> Upload
+                                <!--button.btn.btn-warning.btn-xs(type='button', ng-click='item.cancel()', ng-disabled='!item.isUploading')-->
+                                <!--    span.glyphicon.glyphicon-circle-arrow-down-->
+                                <!--    |  Download-->
+                                <!--button.btn.btn-danger.btn-xs(type='button', ng-click='item.remove()')-->
+                                <!--    span.glyphicon.glyphicon-trash-->
+                                <!--    |  Remove-->
+                            </button>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

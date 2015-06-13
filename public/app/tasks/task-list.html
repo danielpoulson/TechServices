@@ -1,0 +1,54 @@
+<!-- TODO add project number-->
+<section>
+  <div ng-hide="vm.dpShowButton">
+    <div class="col-sm-6 pull-right search">
+      <dv-list-search query="vm.queryTask" dvplace="Search Tasks" page="vm.setPagPage()"></dv-list-search>
+    </div>
+    <div class="well col-lg-6">
+      <div class="checkbox-inline col-sm-5">
+        <label>
+          <input type="checkbox" id="activeonly" ng-model="vm.activeonly"/>Show only Active Tasks
+        </label>
+      </div>
+      <div class="checkbox-inline col-sm-5">
+        <label>
+          <input type="checkbox" id="capaonly" ng-model="vm.capaonly"/>Show Only CAPA
+        </label>
+      </div>
+      <div class="col-sm-1">
+        <btn ng-click="vm.loadAll()" class="btn btn-primary">Filter</btn>
+      </div>
+    </div>
+  </div>
+  <!-- --title and search box-->
+  
+  <table class="table task-table">
+    <thead>
+      <tr class="dv-fmc-background">
+        <th>Project Id</th>
+        <th>Task Action</th>
+        <th>Target Date</th>
+        <th>Completed</th>
+        <th>Champion</th>
+        <th>Status</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr ng-repeat="t in vm.filtered = (vm.tasks | filter: vm.queryTask) | startFrom:(vm.currentPage-1)*vm.numPerPage | limitTo:vm.numPerPage" ng-click="vm.openTask(t)" class="dvTable">
+        <td>{{t.DevId}}</td>
+        <td>{{t.TKName}}</td>
+        <td>{{t.TKTarg | date : "dd/MM/yyyy"}}</td>
+        <td>{{t.TKComp | date : "dd/MM/yyyy"}}</td>
+        <td>{{t.TKChamp}}</td>
+        <td><img change-status="change-status" status="t.TKStat" src=""/></td>
+        <td ng-hide="true" ng-model="t.DevId"></td>
+      </tr>
+    </tbody>
+  </table>
+  <div class="input-group search pull-right col-md-2">
+    <pagination total-items="vm.totalItems" ng-model="vm.currentPage" items-per-page="vm.numPerPage" class="pagination-sm handPointer"></pagination>
+  </div>
+  <div ng-show="vm.dpShowButton" class="addTaskButton pull-left">
+    <button type="button" ng-click="vm.openTask('new')" class="btn btn-success">Add Task</button>
+  </div>
+</section>

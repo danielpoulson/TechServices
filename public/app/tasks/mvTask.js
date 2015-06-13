@@ -7,17 +7,18 @@
     function mvTask($resource) {
 
 
-        var taskResource = $resource('/api/tasks/:taskId', { taskId: '@id' },
-            { 'update': { method: 'PUT', params: { taskId: '@id'}} });
+        var taskResource = $resource('/api/tasks/:taskId', {taskId: '@id'},
+            {'update': {method: 'PUT', params: {taskId: '@id'}}});
 
-        var allTasksList = $resource('/api/alltasks/:status', { status: '@status' });
+        var allTasksList = $resource('/api/alltasks/:status/:capa', {status: '@status', capa: '@capa'});
 
-        var listTaskResource = $resource('/api/deviation/tasks/:id', { DevId: '@id'});
+        var listTaskResource = $resource('/api/deviation/tasks/:id', {DevId: '@id'});
 
         var service = {
             deleteTask: deleteTask,
             getTask: getTask,
             getTasks: getTasks,
+            getTaskCount: getTaskCount,
             getDeviationTasks: getDeviationTasks,
             saveTask: saveTask,
             saveNewTask: saveNewTask
@@ -26,11 +27,11 @@
         return service;
 
         function deleteTask (taskId) {
-            return taskResource.delete({ taskId: taskId });
+            return taskResource.delete({taskId: taskId});
         }
 
         function getDeviationTasks(DevId) {
-            return listTaskResource.query({ id: DevId });
+            return listTaskResource.query({id: DevId});
 
         }
 
@@ -41,21 +42,26 @@
 //        }
 
 
-        function getTasks(status) {
-            var tasks = allTasksList.query({ status: status });
+        function getTasks(status, capa) {
+            var tasks = allTasksList.query({status: status, capa: capa});
 
             return tasks;
         }
 
         function getTask(taskId) {
-            var task = taskResource.get({ taskId: taskId });
+            var task = taskResource.get({taskId: taskId});
 
             return task;
         }
 
+        function getTaskCount(taskId){
+            var taskcount = taskResource.get({taskId: taskId});
+            return taskcount;
+        }
+
         function saveTask(taskId, task) {
-            taskResource.get({ taskId: taskId });
-            return taskResource.update({ taskId: taskId }, task);
+            taskResource.get({taskId: taskId});
+            return taskResource.update({taskId: taskId}, task);
         }
 
         function saveNewTask(task) {

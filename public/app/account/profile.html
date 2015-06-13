@@ -1,0 +1,44 @@
+<div class="well col-md-6 col col-lg-offset-2">
+    <form name="profileForm" class="form-horizontal">
+        <legend>User Profile</legend>
+        <div class="form-group"></div>
+        <label for="username" class="col-md-4 control-label">User Name</label>
+        <div ng-if="!vm.new" class="col-md-8">
+            <select ng-model="vm.fUsers" ng-options="user.firstName + ' ' + user.lastName + ' (' + user.username + ' )' for user in vm.users" class="form-control">
+                <option value="">--Select Username--</option>
+            </select>
+        </div>
+        <div ng-if="vm.new" class="col-md-8">
+            <input type="text" name="username" placeholder="User Name" ng-model="vm.fUsers.username" required="required" class="form-control" />
+        </div>
+        <div class="form-group"></div>
+        <label for="fname" class="col-md-4 control-label">First Name</label>
+        <div class="col-md-8">
+            <input type="text" name="fname" placeholder="First Name" ng-model="vm.fUsers.firstName" required="required" class="form-control" />
+        </div>
+        <div class="form-group"></div>
+        <label for="lname" class="col-md-4 control-label">Last Name</label>
+        <div class="col-md-8">
+            <input type="text" name="lname" placeholder="Last Name" ng-model="vm.fUsers.lastName" required="required" class="form-control" />
+        </div>
+        <div class="form-group"></div>
+        <label for="roles" class="col-md-4 control-label">Roles</label>
+        <div class="col-md-8">
+            <select name="roles" type="text" placeholder="Roles" ng-model="vm.fUsers.roles" ng-options="r for r in vm.listRoles" class="form-control">
+                <option value=""></option>
+            </select>
+        </div>
+        <div class="form-group"></div>
+        <label for="password" class="col-md-4 control-label">Password</label>
+        <div class="col-md-8">
+            <input type="password" name="password" ng-model="vm.fUsers.password" class="form-control" />
+        </div>
+        <div class="form-group"></div>
+        <div class="col-md-8 col-md-offset-4">
+            <div class="pull-right">
+                <button ng-click="vm.update(profileForm)" ng-disabled="signupForm.$invalid" class="btn btn-primary">Submit</button><a href="/" class="btn btn-default">Cancel</a>
+                <button ng-click="vm.delete(fUsers)" class="btn btn-danger">Delete</button>
+            </div>
+        </div>
+    </form>
+</div>

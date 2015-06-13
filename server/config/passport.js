@@ -1,7 +1,7 @@
-var passport = require('passport'),
-  mongoose = require('mongoose'),
-  LocalStrategy = require('passport-local').Strategy,
-  User = mongoose.model('User');
+var passport = require('passport');
+var mongoose = require('mongoose');
+var LocalStrategy = require('passport-local').Strategy;
+var User = mongoose.model('User');
 
 module.exports = function() {
   passport.use(new LocalStrategy(
@@ -12,7 +12,7 @@ module.exports = function() {
         } else {
           return done(null, false);
         }
-      })
+      });
     }
   ));
 
@@ -29,7 +29,7 @@ module.exports = function() {
       } else {
         return done(null, false);
       }
-    })
-  })
+    });
+  });
 
-}
+};

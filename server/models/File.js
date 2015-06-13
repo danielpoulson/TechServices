@@ -12,4 +12,4 @@ var filesSchema = new Schema({
 
 });
 
-var Filedp = mongoose.model('Filedp', filesSchema);
+var File = mongoose.model('File', filesSchema);

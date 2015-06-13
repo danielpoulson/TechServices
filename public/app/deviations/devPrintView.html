@@ -1,0 +1,78 @@
+<div class="container container-fluid report-body">
+    <div class="row">
+        <div><img src="./images/cheminova_logo.png" class="Chemlogo" />
+        </div>
+    </div>
+    <hr/>
+    <div class="row report-header">
+        <div class="col-xs-12">
+            <div class="col-xs-6">
+                <div>Investigation Report</div>
+            </div>
+            <div class="col-xs-6 dpRightCol">
+                <div>{{vm.deviation.dvNo}}</div>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-xs-12">
+            <div class="col-xs-6"><strong>Material No :</strong> {{vm.deviation.dvMatNo}}</div>
+            <div class="col-xs-6"><strong>Assigned To :</strong> {{vm.deviation.dvAssign}}</div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-xs-12">
+            <Strong>Material Name :</Strong> {{vm.deviation.dvMatName}}
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-xs-12">
+            <div class="col-xs-6"><strong>Batch # :</strong> {{vm.deviation.dvBatchNo}}</div>
+            <div class="col-xs-6"><strong>DOM:</strong> {{vm.deviation.dvDOM | date : 'dd/MM/yyyy'}}</div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-xs-12">
+            <div class="col-xs-6"><strong>Customer :</strong> {{vm.deviation.dvCust}}</div>
+            <div class="col-xs-6"><strong>Supplier :</strong> {{vm.deviation.dvSupplier}}</div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-xs-12">
+            <div class="col-xs-6"><strong>Outcome :</strong> {{vm.deviation.dvOutCome}}</div>
+            <div class="col-xs-6"><strong>Category :</strong> {{vm.deviation.dvCat}}</div>
+        </div>
+    </div>
+    <hr/>
+    <div class="row">
+        <div class="dpheading"><b>Describe the Deviation</b>
+        </div>
+        <div class="report-paragraph">{{vm.deviation.dvDescribe}}</div>
+    </div>
+    <div class="row">
+        <div class="dpheading"><b>Investigation</b>
+        </div>
+        <div class="report-paragraph">{{vm.deviation.dvInvest}}</div>
+    </div>
+</div>
+<div class="container container-fluid page-break">
+    <div class="row"><img src="./css/img/cheminova_logo.png" class="Chemlogo" />
+    </div>
+    <div class="row">
+        <div class="h4">Deviation Task and CAPA Actions</div>
+    </div>
+    <div class="row">
+        <ul ng-repeat="t in vm.tasks">
+            <li>
+                <div>
+                    <!--span.glyphicon.glyphicon-tasks--><span>{{$index+1}}.</span> {{t.TKName}}
+                </div>
+                <div class="dptask-text">
+                    <div>Target Date : {{t.TKTarg | date : "dd/MM/yyyy"}}<span ng-show="'{{t.TKStat}}' == 5">   - Date Completed: {{t.TKComp | date : "dd/MM/yyyy"}}</span>
+                    </div>
+                    <div>Assigned To : {{t.TKChamp}}</div>
+                </div>
+            </li>
+        </ul>
+    </div>
+</div>

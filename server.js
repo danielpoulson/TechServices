@@ -1,7 +1,7 @@
 var express = require('express');
 
-
-var env = process.env.NODE_ENV = process.env.NODE_ENV || 'development';
+var env = process.env.NODE_ENV || 'build';
+var port = process.env.PORT || 3030;
 
 var app = express();
 
@@ -13,8 +13,25 @@ require('./server/config/mongoose')(config);
 
 require('./server/config/passport')();
 
-require('./server/config/routes')(app);
+require('./server/config/routes')(app, config);
 
-app.listen(config.port);
+console.log('About to crank up node');
+console.log('PORT=' + port);
+console.log('NODE_ENV=' + env);
 
-console.log('Listening on port ' + config.port + '.......');
+
+switch (env) {
+    case 'build':
+        console.log('** BUILD **');
+        break;
+    default:
+        console.log('** DEV **');
+        break;
+}
+
+app.listen(port, function() {
+    console.log('Express server listening on port ' + port);
+    console.log('env = ' + app.get('env') +
+                '\n__dirname = ' + __dirname +
+                '\nprocess.cwd = ' + process.cwd());
+});

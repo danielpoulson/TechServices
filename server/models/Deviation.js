@@ -10,6 +10,7 @@ var deviationSchema = new Schema({
     dvBatchNo: {type: String, required: '{PATH} is required!'},
     dvSupplier: {type: String, required: '{PATH} is required!'},
     dvDOM: {type: Date},
+    dvDate: {type: Date},
     dvDescribe: {type: String},
     dvAssign: {type: String},
     dvInvest: {type: String},
@@ -17,12 +18,13 @@ var deviationSchema = new Schema({
     dvCustSend: {type: Date},
     dvCat: {type: String},
     dvClass: {type: String},
-    dvClosed: {Type: Number},
-    dvLog: {
+    dvClosed: {type: Number},
+    dvLog: [{
         dvLogType : String,
         dvLogBy : String,
         dvLogDate: Date
-    }
+        }],
+    dvCreated : {type: Date, default: Date.now}
 });
 
 var Deviation = mongoose.model('Deviation', deviationSchema);

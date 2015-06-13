@@ -19,19 +19,13 @@
             $http.get(urlBase).
                 success(function (data) {
                     deferred.resolve(data);
-                    console.log(data);
                 }).
                 error(function (reason) {
                     deferred.reject(reason);
-                    console.log(reason);
                 });
 
-
-
             return deferred.promise;
-
         }
-
 
         return  {
 

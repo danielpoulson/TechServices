@@ -1,0 +1,10 @@
+<form name="devDetailsForm" class="form-horizontal well dv-well">
+  <fieldset>
+    <legend>Deviation Audit Trail</legend>
+  </fieldset>
+  <div style="padding-left:20px; padding-right:20px" class="list-group">
+    <div ng-repeat="obj in vm.deviation.dvLog" class="dpwell">
+      <p><span class="glyphicon glyphicon-edit"></span><strong></strong>{{obj.dvLogType}}<small><em> {{obj.dvLogBy}} on the {{obj.dvLogDate | date : "dd/MM/yyyy"}} at {{obj.dvLogDate | date : "h:mm a"}}</em></small></p>
+    </div>
+  </div>
+</form>

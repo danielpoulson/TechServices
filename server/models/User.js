@@ -1,5 +1,5 @@
-var mongoose = require('mongoose'),
-  encrypt = require('../utilities/encryption');
+var mongoose = require('mongoose');
+var encrypt = require('../utilities/encryption');
 
 var userSchema = mongoose.Schema({
   firstName: {type:String, required:'{PATH} is required!'},
@@ -11,11 +11,14 @@ var userSchema = mongoose.Schema({
   },
   salt: {type:String, required:'{PATH} is required!'},
   hashed_pwd: {type:String, required:'{PATH} is required!'},
-  roles: [String]
+  roles: String
 });
 userSchema.methods = {
   authenticate: function(passwordToMatch) {
     return encrypt.hashPwd(this.salt, passwordToMatch) === this.hashed_pwd;
+  },
+  hasRole: function(role){
+      return this.roles.indexOf(role) > -1;
   }
 };
 var User = mongoose.model('User', userSchema);
@@ -23,18 +26,16 @@ var User = mongoose.model('User', userSchema);
 function createDefaultUsers() {
   User.find({}).exec(function(err, collection) {
     if(collection.length === 0) {
-      var salt, hash;
+        var salt;
+        var hash;
       salt = encrypt.createSalt();
-      hash = encrypt.hashPwd(salt, 'joe');
-      User.create({firstName:'Joe',lastName:'Eames',username:'joe', salt: salt, hashed_pwd: hash, roles: ['admin']});
+      hash = encrypt.hashPwd(salt, 'a');
+      User.create({firstName:'Joe',lastName:'Eames',username:'a', salt: salt, hashed_pwd: hash, roles: ['admin']});
       salt = encrypt.createSalt();
-      hash = encrypt.hashPwd(salt, 'john');
-      User.create({firstName:'John',lastName:'Papa',username:'john', salt: salt, hashed_pwd: hash, roles: []});
-      salt = encrypt.createSalt();
-      hash = encrypt.hashPwd(salt, 'dan');
-      User.create({firstName:'Dan',lastName:'Wahlin',username:'dan', salt: salt, hashed_pwd: hash});
+      hash = encrypt.hashPwd(salt, 'password');
+      User.create({firstName:'Daniel',lastName:'Poulson',username:'danielp', salt: salt, hashed_pwd: hash, roles: ['admin']});
     }
-  })
-};
+  });
+}
 
-exports.createDefaultUsers = createDefaultUsers;
+//exports.createDefaultUsers = createDefaultUsers;
