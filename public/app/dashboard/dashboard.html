@@ -1,8 +1,8 @@
-<h1>Deviation Dashboard</h1>
+<h1>Dashboard</h1>
 
 <div class="row graphs-page">
   <div class="col-md-7">
-    <canvas id="pie" class="chart chart-pie" data="cData" legend="true" labels="cLabels" width="200" height="200"></canvas> 
+    <canvas id="pie" class="chart chart-pie" data="cData" legend="true" labels="cLabels"></canvas> 
   </div>
   <div class="col-md-5">
     <canvas id="bar" class="chart chart-bar" data="data" labels="labels" legend="true" series="series" colours="bColors"></canvas> 
@@ -10,18 +10,18 @@
 </div>
 <div class="row graphs-page">
   <div class="col-md-6">
-    <h4>Deviations closed with 30 days</h4>
+    <h4>Projects closed with 30 days</h4>
     <table class="landing">
       <tr>
-        <td class="dpCol1">Deviation completed in 30 days</td>
+        <td class="dpCol1">Project completed in 30 days</td>
         <td class="dpCol2">{{vm.summary.devClosed1}}</td>
       </tr>
       <tr>
-        <td>Deviation &gt; 30 and &lt; 60 days</td>
+        <td>Project &gt; 30 and &lt; 60 days</td>
         <td class="dpCol2">{{vm.summary.devClosed2}}</td>
       </tr>
       <tr>
-        <td>Deviation &gt; 60 days</td>
+        <td>Project &gt; 60 days</td>
         <td class="dpCol2">{{vm.summary.devClosed3}}</td>
       </tr>
     </table>

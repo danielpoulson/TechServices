@@ -29,6 +29,7 @@
             '!' + publicApp + '**/*.spec.js'
         ],
         stylus: public + 'css/site.styl',
+        less: public + 'css/site.less',
         server: server,
         swig: [
             views + '**/*.html'

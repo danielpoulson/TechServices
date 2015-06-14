@@ -64,14 +64,14 @@ input[type="file"] {
 .search {
   padding: 10px;
 }
-.search> .checkbox-inline {
+.search > .checkbox-inline {
   padding: 10px;
 }
 /*header*/
 .topband {
   padding-top: 20px;
   height: 100px;
-  background-color: #ed1b2c;
+  background-color: #3b5998;
   color: #fff;
 }
 .topband_h1 {
@@ -125,9 +125,9 @@ input[type="file"] {
 .dv-fmc-background {
   background: #0a6da0;
   color: #fff;
-/*> :hover*/
-/*background #FF3D33*/
-/*color #ffffff*/
+  /*> :hover*/
+  /*background #FF3D33*/
+  /*color #ffffff*/
 }
 /*Deviation List Section End*/
 /* Search Section */
@@ -179,7 +179,7 @@ table.table.task-table tr:hover {
 table.table.task-table tr:hover.dv-fmc-background {
   background-color: #0a6da0;
 }
-.table>tbody>tr>td {
+.table > tbody > tr > td {
   padding: 2px;
 }
 /*-------------- Report -------------------*/
@@ -208,7 +208,7 @@ table.table.task-table tr:hover.dv-fmc-background {
 }
 .Chemlogo {
   padding-top: 10px;
-/*padding-bottom 10px*/
+  /*padding-bottom 10px*/
 }
 /*Over write bootsrap defaults*/
 .report-body {
@@ -230,7 +230,7 @@ table.table.task-table tr:hover.dv-fmc-background {
 }
 .report-header .dpRightCol {
   text-align: center;
-/*Report Task Section*/
+  /*Report Task Section*/
 }
 .dptask-text {
   font-style: italic;

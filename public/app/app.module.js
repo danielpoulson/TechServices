@@ -2,7 +2,7 @@
 
     'use strict';
 
-angular.module('app', ['ngResource', 'ui.router','ui.bootstrap', 'angularFileUpload', 'chart.js', 'ngMessages']);
+angular.module('app', ['app.core', 'app.layout', 'app.widgets', 'app.dashboard']);
     
     angular.module('app').config(function($stateProvider, $locationProvider, $urlRouterProvider,$httpProvider ) {
   var routeRoleChecks = {
@@ -30,10 +30,10 @@ angular.module('app', ['ngResource', 'ui.router','ui.bootstrap', 'angularFileUpl
   $urlRouterProvider.otherwise("/");
 
   $stateProvider
-      .state("main", {
+      .state("dashboard", {
         url: "/",
-        templateUrl: "/app/main/main.html",
-        controller: 'MainCtrl as vm'
+        templateUrl: "/app/dashboard/dashboard.html",
+        controller: 'dashboard as vm'
       })
 
       .state("deviationList", {

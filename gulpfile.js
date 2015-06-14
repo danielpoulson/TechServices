@@ -22,12 +22,12 @@ gulp.task('vet', function() {
 });
 
 gulp.task('styles', ['clean-styles'], function() {
-    log('Compiling Stylus --> CSS');
+    log('Compiling LESS --> CSS');
 
     return gulp
-        .src(config.stylus)
+        .src(config.less)
         .pipe($.plumber())
-        .pipe($.stylus())
+        .pipe($.less())
         .pipe($.autoprefixer({browsers: ['last 2 version', '> 5%']}))
         .pipe(gulp.dest(config.temp));
 });

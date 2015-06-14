@@ -1,12 +1,12 @@
 (function() {
 
     angular
-        .module('app')
-        .factory('mvDashboardService', mvDashboardService);
+        .module('app.dashboard')
+        .factory('dashboarddataservice', dashboarddataservice);
 
-    mvDashboardService.$inject = ['$resource'];
+    dashboarddataservice.$inject = ['$resource'];
 
-    function mvDashboardService($resource) {
+    function dashboarddataservice($resource) {
 
         var resClass = $resource("/api/dashboard/class", {isArray : true});
         var resDash = $resource("/api/dashboard/summary", {isArray : false});
