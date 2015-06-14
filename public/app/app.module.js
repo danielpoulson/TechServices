@@ -2,7 +2,12 @@
 
     'use strict';
 
-angular.module('app', ['app.core', 'app.layout', 'app.widgets', 'app.dashboard']);
+angular.module('app', ['app.core',
+                       'app.layout',
+                        'app.widgets',
+                         'app.dashboard',
+                         'app.project'
+                         ]);
     
     angular.module('app').config(function($stateProvider, $locationProvider, $urlRouterProvider,$httpProvider ) {
   var routeRoleChecks = {
@@ -36,20 +41,20 @@ angular.module('app', ['app.core', 'app.layout', 'app.widgets', 'app.dashboard']
         controller: 'dashboard as vm'
       })
 
-      .state("deviationList", {
-        url: "/deviations",
-        templateUrl: "/app/deviations/devListView.html",
-        controller: 'DevListCtrl as vm'
+      .state("projects", {
+        url: "/projects",
+        templateUrl: "/app/projects/projects.html",
+        controller: 'projects as vm'
       })
-      .state("deviationEdit", {
+      .state("projectEdit", {
         abstract: true,
-        url: "/deviations/:id",
-        templateUrl: "/app/deviations/devEditView.html",
-        controller: "DevEditCtrl as vm"
+        url: "/projects/:id",
+        templateUrl: "/app/projects/project-tab.html",
+        controller: "projectEdit as vm"
       })
-      .state("deviationEdit.detail", {
+      .state("projectEdit.detail", {
         url: "/detail",
-        templateUrl: "/app/deviations/devDetailView.html"
+        templateUrl: "/app/deviations/project-detail.html"
       })
       .state("deviationEdit.invest", {
         url: "/invest",

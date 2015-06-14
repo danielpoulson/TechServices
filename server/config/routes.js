@@ -1,6 +1,7 @@
 var auth = require('./auth');
 var users = require('../controllers/users');
-var deviations = require('../controllers/deviations');
+var projects = require('../controllers/projects');
+var projcounts = require('../controllers/projcounts');
 var tasks = require('../controllers/tasks');
 var mongoose = require('mongoose');
 var files = require('../controllers/files');
@@ -16,17 +17,19 @@ module.exports = function(app, config) {
   app.put('/api/users/admin/:id', users.updateAdminUser);
   app.delete('/api/users/admin/:id', users.deleteUser);
 
-  //*************Deviation Routes************************
-  //Deviations
-  app.get('/api/DevItem', deviations.deviationCountYear);
-  app.get('/api/deviationlist/:status', deviations.getDeviations);
-  //app.get('/api/deviations', deviations.getDeviations);
-  app.get('/api/deviations/:id', deviations.getDeviationById);
-  app.get('/api/deviationName/:id', deviations.getDeviationNameById);
+  //*************Project Routes************************
+//Projects
+  app.get('/api/projects/:status', projects.getProjects);
+  app.get('/api/project/:id', projects.getProjectById);
+  app.get('/api/projectName/:id', projects.getProjectNameById);
 
-  app.put('/api/deviations/:id', deviations.updateDeviation);
-  app.post('/api/deviations', deviations.createDeviation);
-  app.delete('/api/deviation/:id', deviations.deleteDeviation);
+  app.put('/api/project/:id', projects.updateProject);
+  app.post('/api/project', projects.createProject);
+  app.delete('/api/project/:id', projects.deleteProject);
+
+  app.get('/api/projectNo/:year', projcounts.getProjYear);
+  app.post('/api/projectNo/:year', projcounts.newProjYear);
+  app.put('/api/projectNo/:year', projcounts.incProjNo);
 
 
   //Task
@@ -49,8 +52,8 @@ module.exports = function(app, config) {
 
 //**********Dashboard function ***************
 
-    app.get('/api/dashboard/class', deviations.getClass);
-    app.get('/api/dashboard/summary', deviations.getDashboard);
+    // app.get('/api/dashboard/class', deviations.getClass);
+    // app.get('/api/dashboard/summary', deviations.getDashboard);
 
 
 

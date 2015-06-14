@@ -1,5 +1,5 @@
 var mongoose = require('mongoose');
-var deviationModel = require('../models/Deviation');
+var projectModel = require('../models/Project');
 var taskModel = require('../models/Task');
 var ProjcountModel = require('../models/Projcount');
 var filesModel = require('../models/File');
@@ -10,7 +10,7 @@ module.exports = function(config) {
   var db = mongoose.connection;
   db.on('error', console.error.bind(console, 'connection error...'));
   db.once('open', function callback() {
-    console.log('DeviationDB db opened');
+    console.log('TechServices db opened');
   });
 
   //userModel.createDefaultUsers();

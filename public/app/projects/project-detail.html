@@ -1,0 +1,121 @@
+<div class="control-group col-md-11">
+    <form name="editProjectForm" role="form" novalidate="novalidate" class="form-horizontal">
+        <div ng-hide="true" ng-model="project.Id"></div>
+        <label for="projTitle" class="col-sm-2 control-label">Title:</label>
+        <div class="col-sm-8">
+            <input id="projTitle" type="text" required="true" placeholder="Enter the project title" data-ng-model="project.Title" class="form-control dp-sp600"
+            />
+        </div>
+        <div class="control-group col-sm-2">
+            <a ng-disabled="!project.FileName.length" href="{{project.FileName}}" class="btn btn-info">Open Project Folder</a>
+        </div>
+        <div class="control-group">
+            <label for="projDescpt" class="col-sm-2 control-label">Project Description:</label>
+            <div class="col-sm-10">
+                <textarea id="projDescpt" rows="4" required="required" placeholder="Enter the project Description" data-ng-model="project.ProjDescpt"
+                class="form-control dp-sp600"></textarea>
+            </div>
+        </div>
+        <div class="control-group">
+            <label for="projchamp" class="col-sm-2 control-label">Champion:</label>
+            <div class="col-sm-10">
+                <input id="projchamp" type="text" required="required" placeholder="Enter the Project champion..." data-ng-model="project.Champion"
+                class="form-control dp-sp300" />
+            </div>
+        </div>
+        <div class="control-group">
+            <label for="projSponsor" class="col-sm-2 control-label">Sponsor:</label>
+            <div class="col-sm-10">
+                <input id="projSponsor" type="text" required="required" placeholder="Sponsor..." data-ng-model="project.Sponsor" class="form-control dp-sp300"
+                />
+            </div>
+        </div>
+        <div class="control-group">
+            <label for="stakeholders" class="col-sm-2 control-label">Stakeholders:</label>
+            <div class="col-sm-10">
+                <textarea id="stakeholders" type="text" placeholder="" data-ng-model="project.Stakeholders" rows="4" cols="50" class="form-control dp-sp600"></textarea>
+            </div>
+        </div>
+        <div class="control-group">
+            <label for="priority" class="col-sm-2 control-label">Priority:</label>
+            <div class="col-sm-1">
+                <select id="priority" type="text" required="required" data-ng-model="project.Priority" ng-options="p for p in Priority"
+                class="form-control dp-sp75">
+                    <option value=""></option>
+                </select>
+            </div>
+        </div>
+        <div class="control-group">
+            <label for="projCSF" class="col-sm-2 control-label">CSF:</label>
+            <div class="col-sm-6">
+                <select id="projCSF" required="required" type="text" placeholder="CSF..." data-ng-model="project.CSF" ng-options="c for c in CSFS"
+                class="form-control dp-sp350">
+                    <option value="">Critical Success Factor</option>
+                </select>
+            </div>
+        </div>
+        <div class="control-group">
+            <label for="projLoc" class="col-sm-2 control-label">Folder Location:</label>
+            <div class="col-sm-10">
+                <input id="projLoc" type="text" placeholder="Enter the project folder Location" data-ng-model="project.FileName" class="form-control dp-sp600"
+                />
+            </div>
+        </div>
+        <div class="control-group">
+            <label for="projDept" class="col-sm-2 control-label">Department:</label>
+            <div class="col-sm-10">
+                <select id="projDept" type="text" required="required" ng-model="project.Department" ng-options="d for d in depts" class="form-control dp-sp300">
+                    <option value="">-- Choose Department --</option>
+                </select>
+            </div>
+        </div>
+        <div class="control-group">
+            <label for="projSite" class="col-sm-2 control-label">Site:</label>
+            <div class="col-sm-10">
+                <select id="projSite" required="required" ng-model="project.Site" ng-options="s for s in sites" class="form-control dp-sp300">
+                    <option value="">-- Select Site --</option>
+                </select>
+            </div>
+        </div>
+        <div class="control-group">
+            <label for="projPROJCD" class="col-sm-2 control-label">Create Date:</label>
+            <div class="col-sm-2">
+                <my-datepicker dp-date="project.PROJCD"></my-datepicker>
+            </div>
+        </div>
+        <div class="control-group">
+            <label class="col-sm-2 control-label">Target Date:</label>
+            <div class="col-sm-6">
+                <my-datepicker dp-date="project.PROJTD"></my-datepicker>
+            </div>
+        </div>
+        <div class="control-group">
+            <label class="col-sm-2 control-label">Date completed:</label>
+            <div class="col-sm-2">
+                <my-datepicker dp-date="project.PROJMD"></my-datepicker>
+            </div>
+        </div>
+        <div class="control-group">
+            <label for="projStatus" class="col-sm-2 control-label">Status:</label>
+            <div class="col-sm-6">
+                <select id="projStatus" type="text" required="required" placeholder="Enter Status..." data-ng-model="project.Status" ng-options="obj.value as obj.text for obj in stats"
+                class="form-control dp-sp250">
+                    <option>New Project</option>
+                </select>
+            </div>
+        </div>
+        <div class="control-group">
+            <label for="projAss_Cont" class="col-sm-2 control-label">Assumptions and Constraints:</label>
+            <div class="col-sm-10">
+                <textarea id="projAss_Cont" type="text" placeholder="" data-ng-model="project.Ass_Cont" rows="4" cols="50" class="form-control dp-sp600"></textarea>
+            </div>
+        </div>
+        <div class="control-group">
+            <label for="projBud_Est" class="col-sm-2 control-label">Budget Estimate</label>
+            <div class="col-sm-10">
+                <input id="projBud_Est" type="text" placeholder="Enter your budget estimate" data-ng-model="project.Bud_Est" class="form-control dp-sp200"
+                />
+            </div>
+        </div>
+    </form>
+</div>

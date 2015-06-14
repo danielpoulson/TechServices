@@ -1,0 +1,35 @@
+    <div class="container">
+        <div class="topband">
+            <section class="col-sm-12">
+                <div class="col-sm-5">
+                    <h3 class="topband_h1">Technical Services</h3>
+                </div>
+                <div class="col-sm-7">
+                    <div ng-include="'/app/account/navbar-login.html'"></div>
+                </div>
+            </section>
+        </div>
+        <div class="navbar navbar-default">
+            <div class="navbar-header">
+                <button type="button" data-toggle="collapse" data-target=".navbar-collapse" class="navbar-toggle">
+                    <span class="icon-bar"></span><span class="icon-bar"></span><span class="icon-bar"></span>
+                </button>
+            </div>
+            <div class="navbar-collapse collapse">
+                <ul class="nav navbar-nav dp-main-nav">
+                    <li>
+                        <a href="/"><span class="glyphicon glyphicon-home"></span>   Home</a>
+                    </li>
+                    <li>
+                        <a ui-sref="projects">
+                            <span class="glyphicon glyphicon-file"></span> Projects
+                        </a>
+                    </li>
+                    <li class="dropdown">
+                        <a ui-sref="tasks({id:'search'})">
+                            <span class="glyphicon glyphicon-tasks"></span> Task Search
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </div>
