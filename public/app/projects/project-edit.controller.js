@@ -9,30 +9,31 @@
         var vm = this;
 
 
-    // Bindable properties and functions are placed on vm.
-    vm.activate = activate;
-    vm.addObj = addObj;
-    vm.addDel = addDel;
-    vm.cancelEdit = cancelEdit;
-    vm.deleteProject = deleteProject;
-    vm.editObj = editObj;
-    vm.editDel = editDel;
-    vm.getObj = getObj;
-    //vm.getNewProjNo = getNewProjNo;
-    vm.getDel = getDel;
-    vm.loadTasks = loadTasks;
-    vm.resetComp = resetComp;
-    vm.rmObj = rmObj;
-    vm.rmDel = rmDel;
+        // Bindable properties and functions are placed on vm.
+        vm.activate = activate;
+        vm.addObj = addObj;
+        vm.addDel = addDel;
+        vm.cancelEdit = cancelEdit;
+        vm.deleteProject = deleteProject;
+        vm.editObj = editObj;
+        vm.editDel = editDel;
+        vm.getObj = getObj;
+        //vm.getNewProjNo = getNewProjNo;
+        vm.getDel = getDel;
+        vm.loadTasks = loadTasks;
+        vm.new = false;
+        vm.resetComp = resetComp;
+        vm.rmObj = rmObj;
+        vm.rmDel = rmDel;
 
-    vm.active = '';
-    vm.project = {};
-    vm.projectName = projectName.projectName;
-    vm.saveProject = saveProject;
-    vm.project.objectives = [];
-    vm.project.deliverables = [];
-    vm.hideBut = hideBut;
-    vm.setBut = false;
+        vm.active = '';
+        vm.project = {};
+        vm.projectName = projectName.projectName;
+        vm.saveProject = saveProject;
+        vm.project.objectives = [];
+        vm.project.deliverables = [];
+        vm.hideBut = hideBut;
+        vm.setBut = false;
 
 //    var currentUser = IdService.currentUser.firstName + " " + IdService.currentUser.lastName;
 

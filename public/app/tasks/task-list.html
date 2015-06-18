@@ -27,18 +27,18 @@
       <tr class="dv-fmc-background">
         <th>Project Id</th>
         <th>Task Action</th>
+        <th>Start Date</th>
         <th>Target Date</th>
-        <th>Completed</th>
         <th>Champion</th>
         <th>Status</th>
       </tr>
     </thead>
     <tbody>
       <tr ng-repeat="t in vm.filtered = (vm.tasks | filter: vm.queryTask) | startFrom:(vm.currentPage-1)*vm.numPerPage | limitTo:vm.numPerPage" ng-click="vm.openTask(t)" class="dvTable">
-        <td>{{t.DevId}}</td>
+        <td>{{t.ProjectId}}</td>
         <td>{{t.TKName}}</td>
+        <td>{{t.TKStart | date : "dd/MM/yyyy"}}</td>
         <td>{{t.TKTarg | date : "dd/MM/yyyy"}}</td>
-        <td>{{t.TKComp | date : "dd/MM/yyyy"}}</td>
         <td>{{t.TKChamp}}</td>
         <td><img change-status="change-status" status="t.TKStat" src=""/></td>
         <td ng-hide="true" ng-model="t.DevId"></td>

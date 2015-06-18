@@ -34,7 +34,7 @@ module.exports = function(app, config) {
 
   //Task
 
-  app.get('/api/deviation/tasks/:id', tasks.getDeviationTaskList);
+  app.get('/api/project/tasks/:id', tasks.getProjectTaskList);
 //  app.get('/api/tasks', tasks.getTasks);
   app.get('/api/alltasks/:status/:capa', tasks.getTasks);
   app.get('/api/tasks/:id', tasks.getTaskById);

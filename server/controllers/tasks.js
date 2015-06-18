@@ -9,8 +9,8 @@ exports.getTasks = function(req, res) {
     });
 };
 
-exports.getDeviationTaskList = function(req, res) {
-    Task.find({DevId:req.params.id}, function(err, collection) {
+exports.getProjectTaskList = function(req, res) {
+    Task.find({ProjectId:req.params.id}, function(err, collection) {
         res.send(collection);
     });
 };

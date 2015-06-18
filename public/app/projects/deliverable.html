@@ -1,0 +1,24 @@
+<form class="form-horizontal">
+    <div class="control-group">
+        <div class="col-sm-9">
+            <input style="margin-left:15px" placeholder="Add, Edit or Delete a deliverable.."
+                   type="text" ng-model="vm.project.delEdit" class="form-control"/>
+        </div>
+    </div>
+    <div class="form-group">
+        <div class="col-sm-3 pull-right">
+            <button data-ng-click="addDel()" class="btn btn-primary">Add</button>
+            <button data-ng-click="editDel()" class="btn btn-warning">Edit</button>
+            <button data-ng-click="rmDel()" class="btn btn-danger">Delete</button>
+        </div>
+    </div>
+    <div style="padding-left:20px; padding-right:20px" class="list-group">
+        <div ng-repeat="del in vm.project.deliverables" ng-click="getDel(del)" class="dpwell"><a href=""
+                                                                                              class="list-group-item">
+            <p><span style="color : green; padding-right: 10px" class="glyphicon glyphicon-ok"></span>{{del.projDel}}
+                <small><em> ( Last edited :
+                    {{del.eByDel}} : {{del.eDateDel | date : 'dd/MM/yyyy'}})</em></small>
+            </p>
+        </a></div>
+    </div>
+</form>

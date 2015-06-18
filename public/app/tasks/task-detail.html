@@ -9,15 +9,15 @@
         </div>
     </div>
     <div class="form-group">
-        <label class="col-sm-2 control-label">Target Date:</label>
+        <label class="col-sm-2 control-label">Start Date:</label>
         <div class="col-sm-3">
-            <dv-date-picker dp-date="vm.task.TKTarg"></dv-date-picker>
+            <dv-date-picker id="TKComp" dp-date="vm.task.TKStart"></dv-date-picker>
         </div>
     </div>
     <div class="form-group">
-        <label class="col-sm-2 control-label">Date Completed:</label>
+        <label class="col-sm-2 control-label">Target Date:</label>
         <div class="col-sm-3">
-            <dv-date-picker id="TKComp" dp-date="vm.task.TKComp"></dv-date-picker>
+            <dv-date-picker dp-date="vm.task.TKTarg"></dv-date-picker>
         </div>
     </div>
     <div class="form-group">
@@ -39,7 +39,7 @@
         <div class="col-sm-offset-2 col-sm-10">
             <div class="checkbox">
                 <label>
-                    <input id="inlineCheckbox2" type="checkbox" ng-true-value="1" ng-false-value="0" ng-model="vm.task.TKCapa" />Preventative Action
+                    <input id="inlineCheckbox2" type="checkbox" ng-true-value="1" ng-false-value="0" ng-model="vm.task.TKMile" />This task is a Milestone
                 </label>
             </div>
         </div>
