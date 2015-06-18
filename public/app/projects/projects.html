@@ -35,7 +35,7 @@
             <th>Target Date</th>
             <th>Status</th>
         </tr>
-        <tr data-ng-repeat="p in filtered = (vm.projects |  filter:queryProject) | orderBy: vm.predicate | startFrom:(vm.currentPage-1)*vm.numPerPage | limitTo:vm.numPerPage"
+        <tr data-ng-repeat="p in vm.filtered = (vm.projects |  filter:queryProject) | orderBy: vm.predicate | startFrom:(vm.currentPage-1)*vm.numPerPage | limitTo:vm.numPerPage"
             ng-click="vm.getProject(p.ProjNo)" class="clickspan projTab">
             <td>{{p.ProjNo}} - {{p.Title}}</td>
             <td>{{p.Champion}}</td>

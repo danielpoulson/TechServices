@@ -101,14 +101,14 @@ input[type="file"] {
   padding: 10px 40px 10px;
   position: relative;
   text-decoration: none;
-  color: #ed1b2c;
+  color: #3b5998;
 }
 .wizard .active {
-  background: #ed1b2c;
+  background: #3b5998;
   color: #fff;
 }
 .dpwell span {
-  color: #ed1b2c;
+  color: #3b5998;
   padding-right: 10px;
 }
 .dv-well {

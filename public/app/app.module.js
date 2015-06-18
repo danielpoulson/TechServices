@@ -55,7 +55,7 @@ angular.module('app', ['app.core',
       })
       .state("projectEdit.detail", {
         url: "/detail",
-        templateUrl: "/app/deviations/project-detail.html"
+        templateUrl: "/app/projects/project-detail.html"
       })
       .state("deviationEdit.invest", {
         url: "/invest",

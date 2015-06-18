@@ -9,7 +9,6 @@ var projectSchema = new Schema({
     Champion: {type: String, required: '{PATH} is required!'},
     Sponsor: {type: String, required: '{PATH} is required!'},
     Stakeholders: [],
-    CSF: {type: String, required: '{PATH} is required!'},
     Priority: {type: String, required: '{PATH} is required!'},
     FileName: String,
     Department: {type: String, required: '{PATH} is required!'},
@@ -19,7 +18,6 @@ var projectSchema = new Schema({
     PROJMD: {type: Date},
     Status: {type: Number, required: '{PATH} is required!'},
     Ass_Cont: String,
-    Bud_Est: String,
     objectives: {
         projObj : String,
         eByObj : String,

@@ -111,9 +111,7 @@ gulp.task('wiredep', function() {
 gulp.task('inject', ['wiredep', 'styles', 'templatecache'], function() {
     log('Wire up the app css into the html, and call wiredep ');
     
-   
-
-    return gulp
+     return gulp
         .src(config.index)
         .pipe($.inject(gulp.src(config.css), {ignorePath: 'public'})) 
         .pipe(gulp.dest(config.views));

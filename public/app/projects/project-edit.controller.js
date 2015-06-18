@@ -3,10 +3,9 @@
 
     angular.module('app.project').controller('projectEdit', projectEdit);
 
-    projectEdit.$inject =
-        ['$location', '$routeParams', 'mvIdentity','mvProject', 'mvProjectName'];
+    projectEdit.$inject = ['$location', '$stateParams', 'IdService','projectdataservice', 'projectName'];
 
-    function projectEdit($location, $routeParams, mvIdentity, mvProject, mvProjectName) {
+    function projectEdit($location, $stateParams, IdService, projectdataservice, projectName) {
         var vm = this;
 
 
@@ -28,14 +27,14 @@
 
     vm.active = '';
     vm.project = {};
-    vm.projectName = mvProjectName.projectName;
+    vm.projectName = projectName.projectName;
     vm.saveProject = saveProject;
     vm.project.objectives = [];
     vm.project.deliverables = [];
     vm.hideBut = hideBut;
     vm.setBut = false;
 
-    var currentUser = mvIdentity.currentUser.firstName + " " + mvIdentity.currentUser.lastName;
+//    var currentUser = IdService.currentUser.firstName + " " + IdService.currentUser.lastName;
 
     //TODO convert static select to dynamic
     vm.sites = [
@@ -132,7 +131,7 @@
     function deleteProject() {
         var val = $routeParams.id;
 
-        return mvProject.deleteProject(val)
+        return projectdataservice.deleteProject(val)
             .$promise.then(function(){
                 $location.url("/projects");
             });
@@ -179,7 +178,7 @@
         var yr = _getYear();
 
 
-        return mvProject.getProjNo(yr)
+        return projectdataservice.getProjNo(yr)
             .$promise.then(function (data) {
                 projNo = data;
 
@@ -196,7 +195,7 @@
 
                 } else {
 
-                    mvProject.newYearStart(yr);
+                    projectdataservice.newYearStart(yr);
                     dpProjNo = '001';
                     console.log(dpProjNo);
                 }
@@ -210,11 +209,11 @@
     }
 
     function getProjectDetail() {
-        var val = $routeParams.id;
+        var val = $stateParams.id;
 
 
         if (val != 'new') {
-            return mvProject.getProject(val)
+            return projectdataservice.getProject(val)
                 .$promise.then(function(data){
                     return vm.project = data;
                 });
@@ -227,18 +226,18 @@
 
 
     function saveProject(project, form) {
-        var val = $routeParams.id;
+        var val = $stateParams.id;
         var yr = _getYear();
 
         if(form.$valid) {
             if (val != 'new') {
-                return mvProject.saveProject(project, val)
+                return projectdataservice.saveProject(project, val)
                     .$promise.then(success, failed);
             }
             else
             {
-                mvProject.incProjectNo(yr);
-                return mvProject.saveNewProject(project)
+                projectdataservice.incProjectNo(yr);
+                return projectdataservice.saveNewProject(project)
                     .$promise.then(success, failed);
 
             }
