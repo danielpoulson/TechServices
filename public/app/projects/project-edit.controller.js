@@ -3,9 +3,9 @@
 
     angular.module('app.project').controller('projectEdit', projectEdit);
 
-    projectEdit.$inject = ['$location', '$stateParams', 'IdService','projectdataservice', 'projectName'];
+    projectEdit.$inject = ['$location', '$stateParams', 'IdService','projectdataservice', 'projectName', 'dvTaskCount'];
 
-    function projectEdit($location, $stateParams, IdService, projectdataservice, projectName) {
+    function projectEdit($location, $stateParams, IdService, projectdataservice, projectName, dvTaskCount) {
         var vm = this;
 
 
@@ -29,13 +29,13 @@
         vm.active = '';
         vm.project = {};
         vm.projectName = projectName.projectName;
-        vm.saveProject = saveProject;
+        vm.save = saveProject;
         vm.project.objectives = [];
         vm.project.deliverables = [];
         vm.hideBut = hideBut;
         vm.setBut = false;
 
-//    var currentUser = IdService.currentUser.firstName + " " + IdService.currentUser.lastName;
+        var currentUser = IdService.currentUser.firstName + " " + IdService.currentUser.lastName;
 
     //TODO convert static select to dynamic
     vm.sites = [
@@ -95,6 +95,7 @@
 
     function activate() {
         getProjectDetail();
+        getTaskCount();
 
     }
 
@@ -124,6 +125,17 @@
 
     }
 
+        function getTaskCount(){
+            var val = $stateParams.id;
+
+            if (val != 'new') {
+                return dvTaskCount.getTaskCount(val)
+                    .then(function(data){
+                        vm.taskcount = data;
+                    });
+            }
+
+        }
 
     function cancelEdit() {
         $location.url("/projects");

@@ -50,7 +50,7 @@ exports.getTaskById = function(req, res) {
 };
 
 exports.getTaskCount = function(req,res){
-    Task.count({DevId:req.params.id}, function(err, taskCount){
+    Task.count({ProjectId:req.params.id}, function(err, taskCount){
         res.send(taskCount.toString());
     });
 };

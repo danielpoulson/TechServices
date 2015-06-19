@@ -27,7 +27,7 @@
            editProjectForm.projChamp.$dirty }">
             <label for="projChamp" class="col-sm-2 control-label">Champion:</label>
             <div class="col-sm-4">
-                <input id="projChamp" type="text" required="true" placeholder="Enter project champion" ng-model="vm.project.champion"
+                <input id="projChamp" type="text" required="true" placeholder="Enter project champion" ng-model="vm.project.Champion"
                        ng-minlength="5" ng-maxlength="51" class="form-control" required />
             </div>
         </div>
@@ -124,6 +124,18 @@
             <label for="projAss_Cont" class="col-sm-2 control-label">Assumptions and Constraints:</label>
             <div class="col-sm-6">
                 <textarea id="projAss_Cont" type="text" placeholder="" ng-model="vm.project.Ass_Cont" rows="4" cols="50" class="form-control"></textarea>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <div style="padding-right:1.2em" class="pull-right">
+                <button type="submit" ng-show="vm.new" ng-disabled="editProjectForm.$invalid"
+                        ng-click="vm.save(vm.project, editProjectForm)"
+                        class="btn btn-primary">Create</button>
+                <button type="submit" ng-disabled="editProjectForm.$invalid"
+                        ng-click="vm.save(vm.project, editProjectForm)"
+                        class="btn btn-primary" ng-hide="vm.new"  >Save Edit</button>
+                <button type="button" ng-click="vm.cancelEdit()" class="btn btn-default">Cancel</button>
             </div>
         </div>
     
