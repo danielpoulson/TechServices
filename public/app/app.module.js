@@ -8,7 +8,8 @@
         'app.widgets',
         'app.dashboard',
         'app.project',
-        'app.task'
+        'app.task',
+        'app.techservice'
     ]);
     
     angular.module('app').config(function($stateProvider, $locationProvider, $urlRouterProvider,$httpProvider ) {
@@ -84,6 +85,16 @@
           url: "/tasks/:id",
           templateUrl: "/app/tasks/task-list.html",
           controller: "tasklist as vm"
+      })
+      .state("techservices", {
+          url: "/techservices",
+          templateUrl: "/app/techservices/techservices.html",
+          controller: "techservices as vm"
+      })
+      .state("techdetails", {
+          url: "/techdetails/:id",
+          templateUrl: "/app/techservices/tech-detail.html",
+          controller: "techdetail as vm"
       })
       .state("profile", {
           url: "/profile/:id",

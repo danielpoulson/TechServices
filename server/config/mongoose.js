@@ -4,6 +4,7 @@ var taskModel = require('../models/Task');
 var ProjcountModel = require('../models/Projcount');
 var filesModel = require('../models/File');
 var userModel = require('../models/User');
+var TechServiceModel = require('../models/TechService');
 
 module.exports = function(config) {
   mongoose.connect(config.db);

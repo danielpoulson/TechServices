@@ -6,6 +6,7 @@ var tasks = require('../controllers/tasks');
 var mongoose = require('mongoose');
 var files = require('../controllers/files');
 var User = mongoose.model('User');
+var techservices = require('../controllers/techservices');
 
 module.exports = function(app, config) {
 //*************User Routes************************
@@ -31,6 +32,13 @@ module.exports = function(app, config) {
   app.post('/api/projectNo/:year', projcounts.newProjYear);
   app.put('/api/projectNo/:year', projcounts.incProjNo);
 
+//**********TechServices ***************
+  app.get('/api/techServices', techservices.getTechServices);
+  app.get('/api/techServices/:id', techservices.getTechServicesById);
+  app.post('/api/techServices', techservices.createTechService);
+  app.put('/api/techServices/:id', techservices.updateRequest);
+  app.get('/api/techItem', techservices.requestCountYear);
+  //app.post('/api/techServices', techservices.createTechService);
 
   //Task
 

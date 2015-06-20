@@ -1,0 +1,132 @@
+<h3 ng-show="new">Add a new request - {{new_lrNum}}</h3>
+<h3 ng-show="!new">Edit - {{vm.tech.LrNo}} : {{vm.tech.IName}}</h3>
+<form name="tsedit" role="form" class="form-horizontal">
+
+    <div class="form-group">
+        <label for="ICode" class="col-sm-2 control-label">Item Code</label>
+        <div class="col-sm-3">
+            <input id="ICode" class="form-control" ng-model="vm.tech.ICode" type="text" required=""/>
+        </div>
+
+        <label for="IBatNo" class="col-sm-2 control-label">Batch Number:</label>
+        <div class="col-sm-3">
+            <input id="IBatNo" type="text" required="" ng-model="vm.tech.IBatNo" class="form-control"/>
+        </div>
+
+    </div><!--Code Number & Batch Number-->
+
+    <div class="form-group">
+        <label for="IName" class="col-sm-2 control-label">Item Name:</label>
+        <div class="col-sm-8">
+            <input id="IName" type="text" required="" placeholder="Enter Item Description" ng-model="vm.tech.IName" class="form-control"/>
+        </div>
+    </div><!--Item Name - Description-->
+
+    <div class="form-group">
+        <label for="IType" class="col-sm-2 control-label">Request Type:</label>
+        <div class="col-sm-3">
+            <select id="IType" type="text" ng-init="vm.tech.Itype = vm.tech.IType || types[0].value" required
+                    ng-model="vm.tech.IType" class="form-control" ng-options="obj for obj in vm.types"></select>
+        </div>
+
+        <label for="IStatus" class="col-sm-2 control-label">Status:</label>
+        <div class="col-sm-3">
+            <select id="IStatus" type="text" required ng-model="vm.tech.IStatus" class="form-control"
+                    ng-options="obj.value as obj.text for obj in vm.stats"></select>
+        </div>
+        <!--<div ng-hide="false" ng-model="vm.tech.IStatus">{{vm.fmstat}}</div>-->
+        <!--<div ng-hide="false" ng-model="vm.tech.IType">{{vm.fmtype}}</div>-->
+
+    </div><!--Select box for the request type selector-->
+
+    <div class="form-group">
+        <label for="ISamDesp" class="col-sm-2 control-label">Sample Description:</label>
+        <div class="col-sm-8">
+            <input id="ISamDesp" type="text" ng-model="vm.tech.ISamDesp" class="form-control"/>
+        </div>
+    </div><!--Sample Description-->
+
+
+    <div class="form-group">
+
+        <label class="col-sm-2 control-label">Target Date:</label>
+        <div class="col-sm-2">
+            <dv-date-picker dp-date="vm.tech.ITarg"></dv-date-picker>
+        </div>
+
+        <label class="col-sm-1 control-label">Completed:</label>
+        <div class="col-sm-2">
+            <dv-date-picker dp-date="vm.tech.IComp"></dv-date-picker>
+        </div>
+
+        <label class="col-sm-1 control-label">Invoiced</label>
+        <div class="col-sm-2">
+            <dv-date-picker dp-date="vm.tech.InvDt"></dv-date-picker>
+        </div>
+        <!--Date section-->
+
+    </div>
+
+    <div class="form-group">
+        <label for="ICmt" class="col-sm-2 control-label">Comment:</label>
+        <div class="col-sm-10">
+            <textarea id="ICmt" rows="6" type="text" placeholder="Enter a comment.." ng-model="vm.tech.ICmt" class="form-control"></textarea>
+        </div>
+    </div><!--Comments Section-->
+
+    <div class="form-group">
+        <label for="ILdTm" class="col-sm-2 control-label">Lead Time(Hr):</label>
+        <div class="col-sm-1">
+            <input id="ILdTm" type="text" ng-model="vm.tech.ILdTm" class="form-control"/>
+        </div>
+
+        <label for="INoSamp" class="col-sm-2 control-label">No of Samples:</label>
+        <div class="col-sm-1">
+            <input id="INoSamp" type="text" required="" ng-model="vm.tech.INoSamp" class="form-control"/>
+        </div>
+
+        <label for="ICust" class="col-sm-2 control-label">Customer:</label>
+        <div class="col-sm-4">
+            <input id="ICust" type="text" required="" ng-model="vm.tech.ICust" class="form-control"/>
+        </div>
+    </div><!--Section-->
+
+    <div class="form-group">
+        <label for="IPo" class="col-sm-2 control-label">Purchase No.</label>
+        <div class="col-sm-2">
+            <input id="IPo" type="text" ng-model="vm.tech.IPo" class="form-control"/>
+        </div>
+
+        <label for="IChrEx" class="col-sm-2 control-label">External Charges:</label>
+        <div class="col-sm-2">
+            <input id="IChrEx" type="text" ng-model="vm.tech.IChrEx" class="form-control"/>
+        </div>
+
+        <label for="IChrInt" class="col-sm-2 control-label">Internal Charges:</label>
+        <div class="col-sm-2">
+            <input id="IChrInt" type="text" ng-model="vm.tech.IChrInt" class="form-control"/>
+        </div>
+    </div><!--Charges for internal customers-->
+
+    <div class="form-group">
+
+        <label for="ProjectId" class="col-sm-2 control-label">Project Id.:</label>
+        <div class="col-sm-2">
+            <input id="ProjectId" type="text" ng-model="vm.tech.ProjectId" class="form-control"/>
+        </div>
+
+        <label for="IResp" class="col-sm-2 control-label">Assigned to:</label>
+        <div class="col-sm-2">
+            <input id="IResp" type="text" ng-model="vm.tech.IResp" class="form-control"/>
+        </div>
+
+    </div><!--Target Date-->
+
+
+    <div class="form-group">
+        <div class="col-sm-offset-8 col-md-4">
+            <button type="submit" ng-click="vm.save(vm.tech, tsedit)" class="btn btn-primary">Save</button>
+            <button type="button" ng-click="vm.cancelEdit()" class="btn btn-default">Cancel</button>
+        </div>
+    </div>
+</form>

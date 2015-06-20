@@ -1,0 +1,26 @@
+<div class="col-md-12">
+    <table class="table table-hover print-table">
+        <tbody>
+        <tr class="print-table-head">
+            <th>Lab Request</th>
+            <th>Item Id</th>
+            <th>Item Description</th>
+            <th>Batch#</th>
+            <th>Target Time</th>
+            <th>Owner</th>
+            <th>Status</th>
+        </tr>
+        <tr ng-repeat="ts in vm.techservices" ng-click="vm.getRequest(ts.LrNo)">
+            <td>{{ts.LrNo}}</td>
+            <td>{{ts.ICode}}</td>
+            <td>{{ts.IName}}</td>
+            <td>{{ts.IBatNo}}</td>
+            <td>{{vm.elaspedTime(ts.IStart, ts.ILdTm, 'hour') | date : '(dd/MM/yy) HH:mm'}}</td>
+            <td>{{ts.IResp}}</td>
+            <td><img change-status="change-status" status="ts.IStatus" src=""/></td>
+            <td ng-hide="true">{{ts.ILdTm}}</td>
+            <td ng-hide="true">{{ts.IStart | date : 'dd/MM/yyyy'}}</td>
+        </tr>
+        </tbody>
+    </table>
+</div>
