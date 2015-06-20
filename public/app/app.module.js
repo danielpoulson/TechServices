@@ -83,7 +83,7 @@
       .state("tasks", {
           url: "/tasks/:id",
           templateUrl: "/app/tasks/task-list.html",
-          controller: "TaskListCtrl as vm"
+          controller: "tasklist as vm"
       })
       .state("profile", {
           url: "/profile/:id",

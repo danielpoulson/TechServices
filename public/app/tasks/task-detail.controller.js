@@ -101,7 +101,7 @@
 
             vm.submitted = true;
 
-           task.TKCapa = +vm.task.TKCapa;
+           task.TKMile = +vm.task.TKMile;
            task.TKChamp = vm.dvUser;
 
 

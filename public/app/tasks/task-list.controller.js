@@ -11,7 +11,7 @@
         vm.activate = activate;
         vm.activeonly = true;
         vm.currentPage = 1;
-        vm.capaonly = null;
+        vm.milestone = 0;
 
         vm.getTask = getTask;
         vm.items = [];
@@ -48,11 +48,11 @@
         }
 
         function getProjectTasks() {
-            //if(IdService.currentUser) {
+            if(IdService.currentUser) {
                 var val = $stateParams.id;
 
                 if(val == 'search'){
-                    return taskdataservice.getTasks(dpStatus, dvCapa)
+                    return taskdataservice.getTasks(dpStatus, vm.milestone)
                         .$promise.then(function(data){
                             vm.tasks = data;
                             vm.projectName = 'Search';
@@ -72,7 +72,7 @@
                             //});
                         });
                 }
-            //}
+            }
 
         }
 
@@ -87,7 +87,7 @@
                 dpStatus = 5;
             }
 
-            dvCapa = +vm.capaonly;
+            dvCapa = +vm.milestone;
             console.log(dvCapa);
 
             getProjectTasks();

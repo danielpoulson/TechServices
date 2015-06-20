@@ -10,7 +10,8 @@
         var taskResource = $resource('/api/tasks/:taskId', {taskId: '@id'},
             {'update': {method: 'PUT', params: {taskId: '@id'}}});
 
-        var allTasksList = $resource('/api/alltasks/:status/:capa', {status: '@status', capa: '@capa'});
+        var allTasksList = $resource('/api/alltasks/:status/:milestone',
+            {status: '@status', milestone: '@milestone'});
 
         var listTaskResource = $resource('/api/project/tasks/:id', {projectId: '@id'});
 
@@ -42,8 +43,8 @@
 //        }
 
 
-        function getTasks(status, capa) {
-            var tasks = allTasksList.query({status: status, capa: capa});
+        function getTasks(status, milestone) {
+            var tasks = allTasksList.query({status: status, milestone: milestone});
 
             return tasks;
         }

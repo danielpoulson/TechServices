@@ -9,7 +9,7 @@ var taskSchema = new Schema({
     TKChamp: {type: String, required: '{PATH} is required!'},
     TKStat: {type: Number, required: '{PATH} is required!'},
     TKActive: {type: Boolean, required: '{PATH} is required!'},
-    TKMile: {type: Boolean, required: '{PATH} is required!'},
+    TKMile: {type: Number, required: '{PATH} is required!'},
     ProjectId: {type: String, required: '{PATH} is required!'},
     TKComment: String
 });

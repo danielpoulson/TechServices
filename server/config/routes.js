@@ -36,7 +36,7 @@ module.exports = function(app, config) {
 
   app.get('/api/project/tasks/:id', tasks.getProjectTaskList);
 //  app.get('/api/tasks', tasks.getTasks);
-  app.get('/api/alltasks/:status/:capa', tasks.getTasks);
+  app.get('/api/alltasks/:status/:milestone', tasks.getTasks);
   app.get('/api/tasks/:id', tasks.getTaskById);
   app.put('/api/tasks/:id', tasks.updateTask);
   app.post('/api/tasks', tasks.createTask);

@@ -9,8 +9,8 @@
     /* @ngInject */
     function IdService($window, UserServ) {
 
-        var currentUser; //Production Setting 
-        //var currentUser = "Devlopement";
+        //var currentUser; //Production Setting
+        var currentUser = "Devlopement";
 
         if (!!$window.bootstrappedUserObject) {
             currentUser = new UserServ();

@@ -2,8 +2,8 @@ var Task = require('mongoose').model('Task');
 
 exports.getTasks = function(req, res) {
     var status = req.params.status;
-    var capa = req.params.capa;
-    Task.find({TKStat: {$lt : status}, TKCapa: {$gte : capa}},{DevId:true, TKName:true, TKTarg:true, TKComp:true, TKChamp:true, TKStat:true, TKCapa:true})
+    var milestone = req.params.milestone;
+    Task.find({TKStat: {$lt : status}, TKMile: {$gte : milestone}},{ProjectId:true, TKName:true, TKTarg:true, TKStart:true, TKChamp:true, TKStat:true, TKMile:true})
         .sort({TKTarg:1}).exec(function(err, collection) {
         res.send(collection);
     });
@@ -16,7 +16,8 @@ exports.getProjectTaskList = function(req, res) {
 };
 
 exports.updateTask = function(req, res) {
-    Task.findByIdAndUpdate({_id:req.params.id}, {$set: req.body}, function (err) {
+    var query = {_id: req.params.id};
+    Task.findOneAndUpdate(query, req.body, function (err) {
         if (err) return handleError(err);
         res.send(200);
     });
