@@ -1,7 +1,6 @@
-<h3 ng-show="new">Add a new request - {{new_lrNum}}</h3>
-<h3 ng-show="!new">Edit - {{vm.tech.LrNo}} : {{vm.tech.IName}}</h3>
 <form name="tsedit" role="form" class="form-horizontal">
-
+    <h4 ng-show="new">Add a new request - {{new_lrNum}}</h4>
+    <h4  ng-show="!new">Edit - {{vm.tech.LrNo}} : {{vm.tech.IName}}</h4>
     <div class="form-group">
         <label for="ICode" class="col-sm-2 control-label">Item Code</label>
         <div class="col-sm-3">

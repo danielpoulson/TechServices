@@ -3,9 +3,9 @@
     
     angular.module('app.project').controller('projects', projects);
 
-    projects.$inject = ['$location', '$state', '$timeout', 'projectdataservice'];
+    projects.$inject = ['$location', '$state', '$timeout', 'IdService', 'projectdataservice'];
 
-    function projects($location, $state, $timeout, projectdataservice) {
+    function projects($location, $state, $timeout, IdService, projectdataservice) {
         
         var vm = this;
 
@@ -14,6 +14,7 @@
         vm.activate = activate;
         vm.projects = [];
         vm.getProject = getProject;
+        vm.openNewProject = openNewProject;
         vm.setPagPage = setPagPage;
         vm.projectName = [];
 
@@ -40,11 +41,19 @@
 
 
         function getProject (projNo) {
-            //if(IdService.currentUser) {
+            if(IdService.currentUser) {
                 $state.go('projectEdit.detail', {id:projNo});
-            //} else {
-              //  mvNotifier.error('You are not logged in!');
-            //}
+            } else {
+                mvNotifier.error('You are not logged in!');
+            }
+        }
+
+        function openNewProject(){
+            if(IdService.currentUser) {
+                $state.go('projectEdit.detail', {id:"new"});
+            } else {
+                mvNotifier.error('You are not logged in!');
+            }
         }
 
         function setPagPage() {

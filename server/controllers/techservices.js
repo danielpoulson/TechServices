@@ -26,7 +26,6 @@ exports.getTechServicesById = function(req, res) {
 };
 
 exports.updateRequest = function(req, res) {
-    console.log(req.body);
     TechService.update({LrNo:req.params.id}, {$set: req.body}, function (err) {
         if (err) return handleError(err);
         res.send(200);

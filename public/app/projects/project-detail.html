@@ -23,23 +23,26 @@
             </div>
         </div>
         
-        <div class="form-group" ng-class="{'has-error': editProjectForm.projChamp.$invalid && 
+        <div class="form-group">
+            <div class="control-group" ng-class="{'has-error': editProjectForm.projChamp.$invalid &&
            editProjectForm.projChamp.$dirty }">
-            <label for="projChamp" class="col-sm-2 control-label">Champion:</label>
-            <div class="col-sm-4">
-                <input id="projChamp" type="text" required="true" placeholder="Enter project champion" ng-model="vm.project.Champion"
-                       ng-minlength="5" ng-maxlength="51" class="form-control" required />
+                <label for="projChamp" class="col-sm-2 control-label">Champion:</label>
+                <div class="col-sm-3">
+                    <input id="projChamp" type="text" required="true" placeholder="Enter project champion" ng-model="vm.project.Champion"
+                           ng-minlength="5" ng-maxlength="51" class="form-control" required />
+                </div>
             </div>
-        </div>
-        
-        <div class="form-group" ng-class="{'has-error': editProjectForm.projSponor.$invalid && 
+
+            <div class="control-group" ng-class="{'has-error': editProjectForm.projSponor.$invalid &&
            editProjectForm.projSponor.$dirty }">
-            <label for="projSponor" class="col-sm-2 control-label">Sponsor:</label>
-            <div class="col-sm-4">
-                <input id="projSponor" type="text" required="true" placeholder="Enter project sponsor" ng-model="vm.project.Sponsor"
-                       ng-minlength="5" ng-maxlength="51" class="form-control" required />
+                <label for="projSponor" class="col-sm-1 control-label">Sponsor:</label>
+                <div class="col-sm-3">
+                    <input id="projSponor" type="text" required="true" placeholder="Enter project sponsor" ng-model="vm.project.Sponsor"
+                           ng-minlength="5" ng-maxlength="51" class="form-control" required />
+                </div>
             </div>
         </div>
+
         
         <div class="form-group">
             <label for="stakeholders" class="col-sm-2 control-label">Stakeholders:</label>

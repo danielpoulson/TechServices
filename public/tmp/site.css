@@ -277,3 +277,8 @@ textarea.ng-touched.ng-invalid {
   color: #f00;
 }
 /*--------------- Custom Validation Section End ----------------*/
+/*--------------- Project Objectives - Deliverables Section start ----------------*/
+.dp_pad_top {
+  padding-top: 30px;
+}
+/*--------------- Project Objectives - Deliverables Section End ----------------*/
