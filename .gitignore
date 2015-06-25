@@ -7,6 +7,9 @@ bin
 obj
 /packages
 
+# Ignore project folders
+public/tmp
+
 # Ignore Node & Bower
 ###################
 node_modules
