@@ -32,6 +32,13 @@ gulp.task('styles', ['clean-styles'], function() {
         .pipe(gulp.dest(config.temp));
 });
 
+gulp.task("babel", ['clean-tempjs'], function () {
+    log('Compiling ES2015 --> ES5');
+    return gulp.src(config.js)
+        .pipe($.babel())
+        .pipe(gulp.dest(config.tempjs));
+});
+
 gulp.task('fonts', ['clean-fonts'], function() {
     log('Copying fonts');
 
@@ -67,9 +74,13 @@ gulp.task('clean-styles', function(done) {
     clean(config.temp + '**/*.css', done);
 });
 
+gulp.task('clean-tempjs', function(done){
+    clean(config.tempjs + '**/*.js', done);
+});
+
 gulp.task('clean-code', function(done) {
     var files = [].concat(
-        config.temp + '**/*.js',
+        config.temp + 'templates.js',
         config.build + '**/*.html',
         config.build + 'js/**/*.js'
     );
@@ -93,7 +104,7 @@ gulp.task('templatecache', ['clean-code'], function() {
         .pipe(gulp.dest(config.temp));
 });
 
-gulp.task('wiredep', function() {
+gulp.task('wiredep', ['babel'], function() {
     log('Wire up the bower css js and our app js into the html');
     var options = config.getWiredepDefaultOptions();
     var wiredep = require('wiredep').stream;
@@ -101,14 +112,14 @@ gulp.task('wiredep', function() {
     return gulp
         .src(config.index)
         .pipe(wiredep(options))
-        .pipe($.inject(gulp.src(config.js),{
+        .pipe($.inject(gulp.src(config.js5),{
                 ignorePath: 'public',
                 addRootSlash: true
             }))
         .pipe(gulp.dest(config.views));
 });
 
-gulp.task('inject', ['wiredep', 'styles', 'templatecache'], function() {
+gulp.task('inject', ['wiredep','styles','templatecache'], function() {
     log('Wire up the app css into the html, and call wiredep ');
     
      return gulp
@@ -214,7 +225,7 @@ function startBrowserSync(isDev) {
     log('Starting browser-sync on port ' + port);
 
     if (isDev) {
-        gulp.watch([config.stylus], ['styles'])
+        gulp.watch([config.stylus, config.js], ['styles', 'babel'])
             .on('change', function(event) { changeEvent(event); });
     } else {
         gulp.watch([config.stylus, config.js, config.html], ['optimize', browserSync.reload])

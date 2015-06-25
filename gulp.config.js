@@ -3,6 +3,7 @@
     var publicApp = public + 'app/';
     var server = './server/';
     var temp = public + 'tmp/';
+    var tempjs = temp + 'js/';
     var views = public + 'views/';
 
     var config = {
@@ -28,6 +29,11 @@
             publicApp + '**/*.js',
             '!' + publicApp + '**/*.spec.js'
         ],
+        js5: [
+            tempjs + '**/*.module.js',
+            tempjs + '**/*.js',
+            '!' + tempjs + '**/*.spec.js'
+        ],
         stylus: public + 'css/site.styl',
         less: public + 'css/site.less',
         server: server,
@@ -36,6 +42,7 @@
             //'!' + views + 'layout.html'
         ],
         temp: temp,
+        tempjs: tempjs,
         views: views,
 
         /**

@@ -10,7 +10,7 @@
 
         var _classData = [];
         var _labels = [];
-        var _data = [];
+        let _data = [];
         var _y1open = 0;
         $scope.bColors = ['#FF5252', '#3333FF'];
 
@@ -19,6 +19,7 @@
         function activate() {
 
             setStatic();
+
 
             //getClassData();
             // getSummaryData();
