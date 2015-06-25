@@ -82,7 +82,7 @@
 
         $scope.configYear = {
             "labels": false,
-            "title": "Deviation Opened and Closed",
+            "title": "Open projects",
             "legend": {
                 "display": true,
                 "position": "right"
