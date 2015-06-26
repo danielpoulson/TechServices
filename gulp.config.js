@@ -5,6 +5,7 @@
     var temp = public + 'tmp/';
     var tempjs = temp + 'js/';
     var views = public + 'views/';
+    var typings = './tools/typings/';
 
     var config = {
     
@@ -41,10 +42,10 @@
             views + '**/*.html'
             //'!' + views + 'layout.html'
         ],
+
         temp: temp,
         tempjs: tempjs,
         views: views,
-
         /**
          * template cache
          */
